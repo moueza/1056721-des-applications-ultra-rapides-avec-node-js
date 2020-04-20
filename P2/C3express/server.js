@@ -6,8 +6,24 @@ var app = express();
 
 app.get('/', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
+    res.write('<!DOCTYPE html>'+
+'<html>'+
+'    <head>'+
+'        <meta charset="utf-8" />'+
+'        <title>Ma page Node.js !</title>'+
+'    </head>'+ 
+'    <body>'+
+'     	<p>Voici un paragraphe <strong>HTML</strong> !</p>'+
+'    </body>'+
+'</html>');
+});
+
+
+app.get('/index', function(req, res) {
+    res.setHeader('Content-Type', 'text/plain');
     res.send('Vous êtes à l\'accueil, que puis-je pour vous ?');
 });
+
 
 app.get('/sous-sol', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
