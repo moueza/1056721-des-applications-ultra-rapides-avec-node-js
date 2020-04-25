@@ -17,16 +17,8 @@ app.get('/sous-sol', function(req, res) {
     res.send('Vous êtes dans la cave à vins, ces bouteilles sont à moi !');
 });
 
-//app.get('/etage/1/chambre', function(req, res) {
-//    res.setHeader('Content-Type', 'text/plain');
-//    res.send('Hé ho, c\'est privé ici !');
-//});
-app.get('/etage/:etagenum/chambre', function(req, res) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Vous êtes à la chambre de l\'étage n°' + req.params.etagenum);
-});
 
-//les routes dynamiques avant dyn (templates debut)
+//les routes avant dyn (templates debut)
 //marche pas : affiche ms tourne en rond
 app.get('/templates-avant', function(req, res) {
     //res.setHeader('Content-Type', 'text/plain');//n affiche rien si tu mets ca
@@ -40,6 +32,18 @@ app.get('/templates-avant', function(req, res) {
 '     	<p>Templates AV  Voici un paragraphe <strong>HTML</strong> !</p>'+
 '    </body>'+
 '</html>');
+});
+
+
+//app.get('/etage/1/chambre', function(req, res) {
+//    res.setHeader('Content-Type', 'text/plain');
+//    res.send('Hé ho, c\'est privé ici !');
+//});
+app.get('/etage/:etagenum/chambre', function(req, res) {
+    res.render('chambre.ejs',{etage:req.params.etagenum});
+    /* res.setHeader('Content-Type', 'text/plain');
+    res.end('Vous êtes à la chambre de l\'étage n°' + req.params.etagenum);
+ */
 });
 /**erreur 404*/
 app.use(function(req, res, next){
