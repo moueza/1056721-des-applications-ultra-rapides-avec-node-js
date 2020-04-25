@@ -4,22 +4,9 @@ var app = express();
 
 
 
+
+//dyn
 app.get('/', function(req, res) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('<!DOCTYPE html>'+
-'<html>'+
-'    <head>'+
-'        <meta charset="utf-8" />'+
-'        <title>Ma page Node.js !</title>'+
-'    </head>'+ 
-'    <body>'+
-'     	<p>Voici un paragraphe <strong>HTML</strong> !</p>'+
-'    </body>'+
-'</html>');
-});
-
-
-app.get('/index', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
     res.send('Vous êtes à l\'accueil, que puis-je pour vous ?');
 });
@@ -37,6 +24,22 @@ app.get('/sous-sol', function(req, res) {
 app.get('/etage/:etagenum/chambre', function(req, res) {
     res.setHeader('Content-Type', 'text/plain');
     res.end('Vous êtes à la chambre de l\'étage n°' + req.params.etagenum);
+});
+
+//les routes dynamiques avant dyn (templates debut)
+//marche pas : affiche ms tourne en rond
+app.get('/templates-avant', function(req, res) {
+    //res.setHeader('Content-Type', 'text/plain');//n affiche rien si tu mets ca
+    res.write('<!DOCTYPE html>'+
+'<html>'+
+'    <head>'+
+'        <meta charset="utf-8" />'+
+'        <title>Ma page Node.js !</title>'+
+'    </head>'+ 
+'    <body>'+
+'     	<p>Templates AV  Voici un paragraphe <strong>HTML</strong> !</p>'+
+'    </body>'+
+'</html>');
 });
 /**erreur 404*/
 app.use(function(req, res, next){
