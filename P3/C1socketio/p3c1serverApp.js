@@ -14,10 +14,18 @@ var io = require('socket.io').listen(server);
 
 // Quand un client se connecte, on le note dans la console
 io.sockets.on('connection', function (socket) {
-    console.log('Un client est connecté !');
-
     socket.emit('message', 'Vous êtes bien connecté !');
+
+    // Quand le serveur reçoit un signal de type "message" du client    
+    socket.on('message', function (message) {
+        console.log('Un client me parle ! Il me dit : ' + message);
+    });	
 });
+
+
+
+
+
 
 
 server.listen(8000);
